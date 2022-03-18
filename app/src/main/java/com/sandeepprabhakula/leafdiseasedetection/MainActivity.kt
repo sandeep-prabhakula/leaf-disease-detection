@@ -1,0 +1,56 @@
+package com.sandeepprabhakula.leafdiseasedetection
+
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import androidx.core.app.ActivityCompat
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        requestPermissions()
+    }
+
+    private fun hasCameraPermission() =
+        ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+
+    private fun hasReadExternalStoragePermission() =
+        ActivityCompat.checkSelfPermission(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+
+    private fun requestPermissions() {
+        val permissionToRequest = mutableListOf<String>()
+        if (!hasCameraPermission()) {
+            permissionToRequest.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        if(!hasReadExternalStoragePermission()){
+            permissionToRequest.add(Manifest.permission.CAMERA)
+        }
+        if (permissionToRequest.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, permissionToRequest.toTypedArray(), 200)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 200 && grantResults.isNotEmpty()) {
+            for (i in grantResults.indices) {
+                if (i == PackageManager.PERMISSION_GRANTED) {
+                    Log.d("requestedPermission","${permissions[i]} granted")
+                }
+            }
+        }
+    }
+}

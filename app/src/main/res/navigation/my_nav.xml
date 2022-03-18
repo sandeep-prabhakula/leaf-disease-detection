@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/detectionOfDisease">
+    <fragment
+        android:id="@+id/detectionOfDisease"
+        android:name="com.sandeepprabhakula.leafdiseasedetection.fragments.DetectionOfDisease"
+        android:label="fragment_detection_of_disease"
+        tools:layout="@layout/fragment_detection_of_disease" />
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.sandeepprabhakula.leafdiseasedetection.fragments.UserProfile"
+        android:label="fragment_user_profile"
+        tools:layout="@layout/fragment_user_profile" />
+</navigation>
