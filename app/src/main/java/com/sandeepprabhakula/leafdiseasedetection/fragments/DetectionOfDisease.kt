@@ -79,9 +79,9 @@ class DetectionOfDisease : Fragment() {
         for (i in 0 until imageSize) {
             for (j in 0 until imageSize) {
                 val tem = intValues[pixel++] // RGB
-                byteBuffer.putFloat((tem shr 16 and 0xFF) * (1f / 1))
-                byteBuffer.putFloat((tem shr 8 and 0xFF) * (1f / 1))
-                byteBuffer.putFloat((tem and 0xFF) * (1f / 1))
+                byteBuffer.putFloat((tem shr 16 and 0xFF) * (1f / 255))
+                byteBuffer.putFloat((tem shr 8 and 0xFF) * (1f / 255))
+                byteBuffer.putFloat((tem and 0xFF) * (1f / 255))
             }
         }
         inputFeature0.loadBuffer(byteBuffer)
@@ -97,6 +97,7 @@ class DetectionOfDisease : Fragment() {
                 maxPos = i
             }
         }
+        binding.accuracyResult.text = maxConfidence.toString()
         val classes = arrayOf(
             "Apple Scab",
             "Apple Black Rot",
