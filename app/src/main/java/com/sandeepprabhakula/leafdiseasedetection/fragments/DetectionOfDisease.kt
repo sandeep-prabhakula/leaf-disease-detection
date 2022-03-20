@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
-import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,12 +15,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.sandeepprabhakula.leafdiseasedetection.databinding.FragmentDetectionOfDiseaseBinding
-import com.sandeepprabhakula.leafdiseasedetection.ml.DiseaseModel
+import com.sandeepprabhakula.leafdiseasedetection.ml.LeafDisease
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
-import kotlin.math.min
 
 class DetectionOfDisease : Fragment() {
     private val REQUEST_IMAGE_CAPTURE = 1
@@ -57,16 +55,18 @@ class DetectionOfDisease : Fragment() {
             classifyImage(imageBitmap)
         }
     }
+
     private val getContent =
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
             curFile = uri
             binding.testImage.setImageURI(curFile)
-            var imageBitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver,curFile)
+            var imageBitmap = MediaStore.Images.Media.getBitmap(context?.contentResolver, curFile)
             imageBitmap = Bitmap.createScaledBitmap(imageBitmap, imageSize, imageSize, false)
             classifyImage(imageBitmap)
         }
+
     private fun classifyImage(image: Bitmap?) {
-        val model = DiseaseModel.newInstance(requireContext())
+        val model = LeafDisease.newInstance(requireContext())
         val inputFeature0 =
             TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
         val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
@@ -78,14 +78,14 @@ class DetectionOfDisease : Fragment() {
 
         for (i in 0 until imageSize) {
             for (j in 0 until imageSize) {
-                val tem = intValues[pixel++] // RGB
+                val tem = intValues[pixel++]
                 byteBuffer.putFloat((tem shr 16 and 0xFF) * (1f / 255))
                 byteBuffer.putFloat((tem shr 8 and 0xFF) * (1f / 255))
                 byteBuffer.putFloat((tem and 0xFF) * (1f / 255))
             }
         }
         inputFeature0.loadBuffer(byteBuffer)
-        val outputs: DiseaseModel.Outputs = model.process(inputFeature0)
+        val outputs: LeafDisease.Outputs = model.process(inputFeature0)
         val outputFeature0: TensorBuffer = outputs.outputFeature0AsTensorBuffer
 
         val confidences = outputFeature0.floatArray
@@ -99,24 +99,44 @@ class DetectionOfDisease : Fragment() {
         }
         binding.accuracyResult.text = maxConfidence.toString()
         val classes = arrayOf(
-            "Apple Scab",
-            "Apple Black Rot",
-            "Apple Cedar Rust",
-            "Cherry Powdery Mildew",
-            "Corn Cercospora Leaf Spot Gray",
-            "Corn Common Rust",
-            "Grape Black rot",
-            "Grape Black Measles",
-            "Orange citrus greening",
-            "Tomato Mosaic Virus",
-            "Tomato Yellow Leaf Curl Virus"
+            "Apple - Scab",
+            "Apple - Black Rot",
+            "Apple -Cedar Apple Rust",
+            "Apple -Healthy",
+            "Cherry -Healthy",
+            "Cherry -Powdery Mildew",
+            "Corn -Cercospora Leaf Spot Gray",
+            "Corn -Common Rust",
+            "Corn -Healthy",
+            "Corn -North Leaf Blight",
+            "Grape -Black Rot",
+            "Grape -Black Measles",
+            "Grape -Leaf Blight",
+            "Grape -Healthy",
+            "Orange -Citrus Greening",
+            "Peach -Bacterial Spot",
+            "Peach -Healthy",
+            "Pepper -Bacterial Spot",
+            "Pepper -Healthy",
+            "Potato -Early Blight",
+            "Potato -Healthy",
+            "Potato -Late Blight",
+            "Squash -Powdery Mildew",
+            "Strawberry - Healthy",
+            "Strawberry - Leaf Scorch",
+            "Tomato - Bacterial Spot",
+            "Tomato - Early Blight",
+            "Tomato - Healthy",
+            "Tomato - Late Blight",
+            "Tomato - Leaf Mold",
+            "Tomato - Septoria leaf spot",
+            "Tomato - Spider mites",
+            "Tomato - Target Spot",
+            "Tomato - Mosaic virus",
+            "Tomato - Yellow Leaf curl virus"
+
         )
         binding.diseaseResult.text = classes[maxPos]
-        var s: String? = ""
-        for (i in classes.indices) {
-            s += java.lang.String.format("%s: %.1f%%\n", classes[i], confidences[i] * 100)
-        }
-        Log.d("accuracy",s.toString())
         model.close()
     }
 }
