@@ -5,12 +5,33 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.core.app.ActivityCompat
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sandeepprabhakula.leafdiseasedetection.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val navController = findNavController(R.id.navHostFragment)
+        val bottomNav:BottomNavigationView = findViewById(R.id.bottomNav)
+        bottomNav.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener{_,destination,_->
+            when(destination.id){
+                R.id.loginFragment->{
+                    bottomNav.visibility = View.GONE
+                }
+                else->{
+                    bottomNav.visibility = View.VISIBLE
+                }
+            }
+
+        }
         requestPermissions()
     }
 

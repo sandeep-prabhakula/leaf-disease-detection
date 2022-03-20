@@ -7,13 +7,13 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.sandeepprabhakula.leafdiseasedetection.databinding.ActivityMainBinding
 import com.sandeepprabhakula.leafdiseasedetection.databinding.FragmentDetectionOfDiseaseBinding
 import com.sandeepprabhakula.leafdiseasedetection.ml.LeafDisease
 import org.tensorflow.lite.DataType

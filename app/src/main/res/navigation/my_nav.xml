@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/detectionOfDisease">
+    app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/detectionOfDisease"
         android:name="com.sandeepprabhakula.leafdiseasedetection.fragments.DetectionOfDisease"
@@ -13,5 +13,22 @@
         android:id="@+id/userProfile"
         android:name="com.sandeepprabhakula.leafdiseasedetection.fragments.UserProfile"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfile_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/userProfile"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.sandeepprabhakula.leafdiseasedetection.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_detectionOfDisease"
+            app:destination="@id/detectionOfDisease"
+            app:popUpTo="@id/detectionOfDisease"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/activity_main.xml" value="0.10235507246376811" />
+        <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/fragment_detection_of_disease.xml" value="0.1546875" />
         <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/fragment_disease_detection.xml" value="0.1546875" />
+        <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/fragment_login.xml" value="0.1546875" />
+        <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/layout/fragment_user_profile.xml" value="0.1546875" />
+        <entry key="..\:/Users/prabh/AndroidStudioProjects/LeafDiseaseDetection/app/src/main/res/menu/bottom_nav.xml" value="0.10740740740740741" />
       </map>
     </option>
   </component>
