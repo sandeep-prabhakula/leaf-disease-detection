@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">LeafDiseaseDetection</string>
+    <string name="app_name" translatable="false">LeafDiseaseDetection</string>
+    <string name="disease_name">Plant Disease Name :</string>
+    <string name="accuracy">Accuracy: </string>
+    <string name="display_name">User Name</string>
+    <string name="user_email">User email</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="sign_up_with_google">Sign Up with Google</string>
+    <string name="test_image">Test Image</string>
+    <string name="camera_intent">Camera Intent</string>
+    <string name="file_intent">Files Intent</string>
+    <string name="dp">Display Picture</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="disease_detection">Disease Detection</string>
+    <string name="user_profile">User Profile</string>
+    <string name="prediction_note">*Note : Predictions are accurate till some extent please approach your nearby lab for more details.</string>
 </resources>

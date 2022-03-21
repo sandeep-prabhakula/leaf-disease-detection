@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
     ): View{
         _binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         val userSignInText: TextView = binding.googleSignInbutton.getChildAt(0)as TextView
-        userSignInText.text = "Sign Up with Google"
+        userSignInText.text = getString(R.string.sign_up_with_google)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("20484353003-nv88ck088k0b0rer1u6honq12b13s90k.apps.googleusercontent.com")
             .requestEmail()

@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/detectionOfDisease"
-        android:title="Disease Detection"
+        android:title="@string/disease_detection"
         android:icon="@drawable/ic_leaf"/>
 
     <item
         android:id="@+id/userProfile"
         android:icon="@drawable/ic_baseline_person_outline_24"
-        android:title="User Profile"/>
+        android:title="@string/user_profile"/>
 </menu>

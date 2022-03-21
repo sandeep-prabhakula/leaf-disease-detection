@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disease_name">पौधे के रोग का नाम :</string>
+    <string name="accuracy">शुद्धता
+: </string>
+    <string name="display_name">उपयोगकर्ता नाम
+</string>
+    <string name="user_email">उपयोगकर्ता ईमेल
+</string>
+    <string name="sign_out">साइन आउट
+</string>
+    <string name="delete_account">खाता हटा दो</string>
+    <string name="sign_up_with_google">Google के साथ साइन अप करें</string>
+    <string name="test_image">Test Image</string>
+    <string name="camera_intent">Camera Intent</string>
+    <string name="file_intent">Files Intent</string>
+    <string name="dp">Display Picture</string>
+    <string name="choose_language">भाषा चुनें
+</string>
+    <string name="disease_detection">
+रोग का पता लगाएं
+</string>
+    <string name="user_profile">उपयोगकर्ता रूपरेखा
+</string>
+    <string name="prediction_note">*नोट: भविष्यवाणियां कुछ हद तक सटीक होती हैं, कृपया अधिक जानकारी के लिए अपने नजदीकी प्रयोगशाला से संपर्क करें |</string>
+</resources>

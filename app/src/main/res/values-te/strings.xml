@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disease_name">మొక్క వ్యాధి పేరు : </string>
+    <string name="accuracy">ఖచ్చితత్వం
+ : </string>
+    <string name="display_name">వినియోగదారు పేరు
+</string>
+    <string name="user_email">వినియోగదారు ఇమెయిల్
+</string>
+    <string name="sign_out">సైన్ అవుట్ చేయండి
+</string>
+    <string name="delete_account">ఖాతాను తొలగించండి
+</string>
+    <string name="sign_up_with_google">Googleతో సైన్ అప్ చేయండి
+</string>
+    <string name="test_image">Test Image</string>
+    <string name="camera_intent">Camera Intent</string>
+    <string name="file_intent">Files Intent</string>
+    <string name="dp">Display Picture</string>
+    <string name="choose_language">భాషను ఎంచుకోండి
+</string>
+    <string name="disease_detection">వ్యాధి గుర్తింపు
+</string>
+    <string name="user_profile">వినియోగదారు వివరాలు
+</string>
+    <string name="prediction_note">*గమనిక: అంచనాలు కొంత వరకు ఖచ్చితంగా ఉంటాయి, దయచేసి మరిన్ని వివరాల కోసం మీ సమీపంలోని ల్యాబ్‌ను సంప్రదించండి.</string>
+</resources>
