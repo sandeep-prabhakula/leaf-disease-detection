@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">LeafDiseaseDetection</string>
+    <string name="app_name" translatable="false">Leaf Disease Detection</string>
     <string name="disease_name">Plant Disease Name :</string>
     <string name="accuracy">Accuracy: </string>
     <string name="display_name">User Name</string>

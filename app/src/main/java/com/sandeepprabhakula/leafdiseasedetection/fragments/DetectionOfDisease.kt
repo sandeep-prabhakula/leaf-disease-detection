@@ -15,7 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.sandeepprabhakula.leafdiseasedetection.databinding.ActivityMainBinding
 import com.sandeepprabhakula.leafdiseasedetection.databinding.FragmentDetectionOfDiseaseBinding
-import com.sandeepprabhakula.leafdiseasedetection.ml.LeafDisease
+import com.sandeepprabhakula.leafdiseasedetection.ml.model
 import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
@@ -66,7 +66,7 @@ class DetectionOfDisease : Fragment() {
         }
 
     private fun classifyImage(image: Bitmap?) {
-        val model = LeafDisease.newInstance(requireContext())
+        val model = model.newInstance(requireContext())
         val inputFeature0 =
             TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
         val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
@@ -85,7 +85,7 @@ class DetectionOfDisease : Fragment() {
             }
         }
         inputFeature0.loadBuffer(byteBuffer)
-        val outputs: LeafDisease.Outputs = model.process(inputFeature0)
+        val outputs: model.Outputs = model.process(inputFeature0)
         val outputFeature0: TensorBuffer = outputs.outputFeature0AsTensorBuffer
 
         val confidences = outputFeature0.floatArray
